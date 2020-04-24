@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Plunker</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="ng-tags-input.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://code.angularjs.org/1.4.2/angular.js"></script>
+  <script src="ng-tags-input.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+  <tags-input ng-model="tags" add-on-enter="true"
+              use-strings=true
+              min-length="0"
+              display-property="text"
+              key-property="id"
+              on-tag-added="onTagAdded($tag)"
+              on-tag-removed="onTagRemoved($tag)">
+    <auto-complete source="loadTags($query)"></auto-complete>
+  </tags-input>
+  
+   <div class="w3-card-2" style="margin-left: 10px;margin-right: 10px;">
+    <table class="w3-table">
+      
+        <tr ng-repeat="x in real_services">
+         <td></td>
+        <th></th>
+        
+      </tr>
+     
+      </table>
+  </div> 
+  <p onclick="v(this.innerHTML);">i  am in the paragraph</p>
+</body>
+
+</html>
