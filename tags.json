@@ -1,0 +1,22 @@
+[
+    { "text": "Lipid Profile","id": 1 },
+    { "text": "Liver Function Test","id": 2  },
+    { "text": "Complete Hemogram","id": 3  },
+    { "text": "Thyroid Profile-Total","id": 4  },
+    { "text": "Kidney Function Test","id": 5  },
+    { "text": "Urine Routine & Microscopy","id": 6  },
+    { "text": "HbA1c","id": 7  },
+    { "text": "Blood Glucose Fasting","id": 8  },
+    { "text": "Vitamin B12 Cyanocobalamin","id": 9  },
+    { "text": "Vitamin D Total-25 Hydroxy","id": 10  },
+    { "text": "HPlus Healthy 2020 Package", "id": 11},
+    { "text": "Healthians Full Body Checkup with Thyroid and CBC", "id": 12},
+    { "text": "Basic Screening Package", "id": 13},
+    { "text": "Healthians Basic Health Checkup", "id": 14},
+    { "text": "Healthy Indian Days Special Package", "id": 15},
+    { "text": "OnePlusOne Extended Package 1599", "id": 16},
+    { "text": "OnePlusOne Be Healthy Package", "id": 17},
+    { "text": "STI Detection Package", "id": 18},
+    { "text": "Healthians Low Energy checkup", "id": 19}
+  ]
+
