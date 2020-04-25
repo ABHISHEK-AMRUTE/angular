@@ -1,6 +1,8 @@
 #table_ele:hover
 {
-    color: green;
+    color: white;
+    font-weight: bold;
+    background-color: green;
    
 }
 
