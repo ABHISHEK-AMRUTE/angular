@@ -11,34 +11,136 @@
   <link rel="stylesheet" href="ng-tags-input.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+  <!-- Angular files -->
   <script src="https://code.angularjs.org/1.4.2/angular.js"></script>
   <script src="ng-tags-input.min.js"></script>
-  <script src="app.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body ng-controller="MainCtrl">
-  <tags-input ng-model="tags" add-on-enter="true"
-              use-strings=true
-              min-length="0"
-              display-property="text"
-              key-property="id"
-              on-tag-added="onTagAdded($tag)"
-              on-tag-removed="onTagRemoved($tag)">
-    <auto-complete source="loadTags($query)"></auto-complete>
-  </tags-input>
-  
-   <div class="w3-card-2" style="margin-left: 10px;margin-right: 10px;">
-    <table class="w3-table">
-      
-        <tr ng-repeat="x in real_services">
-         <td></td>
-        <th></th>
-        
-      </tr>
-     
+
+
+  <div class='w3-container w3-center' style="box-shadow: 2px 3px 3px grey;color: white;background: #0575E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+    <div class="w3-bar w3-large">
+
+      <div style="margin-top:100px;"></div>
+    </div><br>
+    <img src="./doctor.png" width="200px" height="200px" class='w3-img'>
+    <h1 class='w3-xxlarge' style="margin-top:10px; font-family: 'Times New Roman', Times, serif;">
+      <i><b>Digi-Hospital</b></i>
+    </h1>
+    <div class='w3-large' style="margin-top:10px;margin-bottom: 20px;font-family: 'Times New Roman', Times, serif;">
+      <i>Book most trusted and secure medical services on a single click</i>
+    </div>
+    <a href="#search_results"><button id='submit' style="margin-bottom: 40px;"
+        class="w3-button w3-round w3-white w3-border w3-hover-blue ">Get Started</button></a>
+  </div>
+
+
+
+
+
+
+  <!-- Start of Get Started -->
+  <div id='getstarted' class="w3-card-4" style="padding:25px;margin-left:200px;margin-right: 200px;margin-top: 100px;padding-bottom: 50px;">
+
+
+    <label>Search medical services by adding tags.</label>
+    <tags-input class='w3-round-large' ng-model="tags" add-on-enter="true" aria-placeholder="search here"
+      use-strings=true min-length="0" display-property="text" key-property="id" on-tag-added="onTagAdded($tag)"
+      on-tag-removed="onTagRemoved($tag)" onclick="document.getElementById('table_view').style.display='block'">
+      <auto-complete source="loadTags($query)"></auto-complete>
+    </tags-input>
+    <a href="#search_results"><button type="button" class="btn btn-primary" style="float: right;">Search</button>
+    </a>
+    <div id='table_view' class="  w3-padding" style="margin-left: 10px;margin-right: 10px;display: none;">
+      <table id='table' class="w3-table">
+
+
+        <tr>
+          <th>Popular services</th>
+        </tr>
+        <tr id="table_row">
+          <td id="table_ele" ng-click="v(1)">Lipid Profile</td>
+          <td id="table_ele" ng-click="v(5)">Kidney Function Test</td>
+        </tr>
+        <tr id="table_row">
+          <td id="table_ele" ng-click="v(2)">Liver Function Test</td>
+          <td id="table_ele" ng-click="v(6)">Urine Routine & Microscopy</td>
+        </tr>
+        <tr id="table_row">
+          <td id="table_ele" ng-click="v(3)">Complete Hemogram</td>
+          <td id="table_ele" ng-click="v(7)">HbA1c</td>
+        </tr>
+        <tr id="table_row">
+          <td id="table_ele" ng-click="v(4)">Thyroid Profile-Total</td>
+          <td id="table_ele" ng-click="v(8)">Blood Glucose Fasting</td>
+        </tr>
+        <tr>
+          <th onclick="document.getElementById('table_view').style.display='none'"><a href="#getstarted"><button type="button" class="btn btn-primary" >Hide This
+              list</button></a></th>
+        </tr>
       </table>
-  </div> 
-  <p onclick="v(this.innerHTML);">i  am in the paragraph</p>
+    </div>
+
+
+  </div><!--  END OF GET STARTED -->
+
+  <!-- SEARCH RESULTS -->
+
+  <div id="search_results" class="w3-container" style="margin-top: 50px;" onclick="document.getElementById('table_view').style.display='none'">
+    <div class='w3-row w3-border'>
+      <div class="w3-col l5 m5" style="vertical-align: middle;">
+        <div class='w3-card ' style="float:right;vertical-align: middle;">
+
+          <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_UWDbDx.json" background="transparent"
+            speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+        </div>
+      </div>
+      <div class="w3-col l7 m7">
+        <div class='' style="float:left;padding:50px;">
+          <h1 class='w3-xxlarge'
+            style="text-align:center;margin-top:10px; font-family: 'Times New Roman', Times, serif;"><b><i>Your Complete Package</i></b></h1>
+          <p class='w3-large' style="font-family: 'Times New Roman', Times, serif;text-align:center">
+            The default user interface eliminates the extra pain. <br>It can be used across any plateform,<br>from
+            Android's web view to your favorite web browsers<br>
+          <div style="text-align: center;">
+            <button class="w3-button w3-white w3-border w3-border-blue w3-round-large">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!--END OF SEARCH RESULTS -->
+
+
+
+
+
+
+
+
+  <div onclick="document.getElementById('table_view').style.display='none'">
+    sacasc
+  </div>
+
 </body>
+<script src="app.js"></script>
 
 </html>

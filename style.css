@@ -1,0 +1,11 @@
+#table_ele:hover
+{
+    color: yellow;
+   
+}
+
+#top_section{
+    background: #0575E6;  
+    background: -webkit-linear-gradient(to right, #021B79, #0575E6); 
+    background: linear-gradient(to right, #021B79, #0575E6); 
+}
