@@ -44,7 +44,7 @@ background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, F
     <div class='w3-large' style="margin-top:10px;margin-bottom: 20px;font-family: 'Times New Roman', Times, serif;">
       <i>Book most trusted and secure medical services on a single click</i>
     </div>
-    <a href="#search_results"><button id='submit' style="margin-bottom: 40px;"
+    <a href="#getstarted"><button id='submit' style="margin-bottom: 40px;"
         class="w3-button w3-round w3-white w3-border w3-hover-blue ">Get Started</button></a>
   </div>
 
@@ -63,7 +63,7 @@ background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, F
       on-tag-removed="onTagRemoved($tag)" onclick="document.getElementById('table_view').style.display='block'">
       <auto-complete source="loadTags($query)"></auto-complete>
     </tags-input>
-    <a href="#search_results"><button type="button" class="btn btn-primary" style="float: right;">Search</button>
+    <a href="#package_info"><button type="button" class="btn btn-primary" onclick="generate_results()" style="float: right;">Search</button>
     </a>
     <div id='table_view' class="  w3-padding" style="margin-left: 10px;margin-right: 10px;display: none;">
       <table id='table' class="w3-table">
@@ -100,7 +100,8 @@ background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, F
 
   <!-- SEARCH RESULTS -->
 
-  <div id="search_results" class="w3-container" style="margin-top: 50px;" onclick="document.getElementById('table_view').style.display='none'">
+  <div id="package_info" class="w3-container" style="display: none;margin-top: 50px;" onclick="document.getElementById('table_view').style.display='none'">
+    <h1>Search Results</h1>
     <div class='w3-row w3-border'>
       <div class="w3-col l5 m5" style="vertical-align: middle;">
         <div class='w3-card ' style="float:right;vertical-align: middle;">
@@ -113,16 +114,21 @@ background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, F
         <div class='' style="float:left;padding:50px;">
           <h1 class='w3-xxlarge'
             style="text-align:center;margin-top:10px; font-family: 'Times New Roman', Times, serif;"><b><i>Your Complete Package</i></b></h1>
-          <p class='w3-large' style="font-family: 'Times New Roman', Times, serif;text-align:center">
-            The default user interface eliminates the extra pain. <br>It can be used across any plateform,<br>from
-            Android's web view to your favorite web browsers<br>
+          <p  id='content_of_package' class='w3-large' style="font-family: 'Times New Roman', Times, serif;text-align:center">
+          </p>
           <div style="text-align: center;">
-            <button class="w3-button w3-white w3-border w3-border-blue w3-round-large">Buy Now</button>
+            <div id="pack_price"class='w3-xxlarge' style='font-style: italic;color:green;font-weight:bold' ng-model="final_payment">RS <span id="price_package">100</span></div>
+          
+            <button data-target="#login" data-toggle="modal" class="w3-button w3-white w3-border w3-border-blue w3-round-large" onclick="save()">Buy Now</button>
           </div>
+          
         </div>
       </div>
     </div>
 
+  </div>
+  <div id="individual_results"  onclick="document.getElementById('table_view').style.display='none'">
+   
   </div>
 
 
@@ -132,14 +138,52 @@ background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, F
 
 
 
-
-
-
-
-  <div onclick="document.getElementById('table_view').style.display='none'">
-    sacasc
+  <div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      
+      <div class="modal-content">
+        <div class="modal-body">
+          <button data-dismiss="modal" class="close">&times;</button>
+          <h4>Login</h4>
+          <form>
+            <input type="text" ng-model="username" name="username" class="username form-control" placeholder="Username"/>
+            <input type="password" name="password" class="password form-control" placeholder="password"/>
+            <input class="btn login "  data-dismiss="modal" type="submit" onclick="show()" value="Login" />
+            <input class="btn login " data-dismiss="modal" type="submit" onclick="show()" value="Skip" />
+          </form>
+        </div>
+      </div>
+    </div>  
   </div>
 
+
+
+
+  <!-- style="display: none;" -->
+<div id="payment" style="display: none;" >
+  <div class="w3-card  w3-round-large" style="margin:200px; padding:50px">
+    <h1 style="text-align: center;" class="w3-blue"><b>Invoice</b></h1>
+    <ul class="w3-large">
+      <li>Name : {{username}}</li>
+      <li>Mobile Number : 94244XXXX</li>
+      <li>Address : Rathala,kalyani,West Bengal.</li>
+      <li>Total Amount : Rs <span id="final_invoice_price">100</span></li>
+    </ul>
+    <h1 style="text-align: center;" class="w3-blue">Payment option</h1>
+    <select  ng-model="value" class="w3-select" name="option" style="padding: 5px;">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="UPI">UPI</option>
+      <option value="Credit Card">Credit Card</option>
+      <option value="Debit Card">Debit Card</option>
+    </select>
+
+    <h4 style="margin-top: 20px;color: black;">Enter your {{value}} details</h4>
+    
+    <input class="w3-input w3-animate-input" placeholder="{{value}}" type="text" style="width:30%">
+    <button id='submit' style="margin-top: 5px;"
+        class="w3-button w3-round w3-white w3-border w3-hover-blue " >Make Final Payment</button>
+  </div>
+</div>
 </body>
 <script src="app.js"></script>
 
